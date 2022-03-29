@@ -5,7 +5,11 @@
 
 // global instance variables
 
+const playerSelection = "rock";
 const choices = ["rock","paper","scissors"];
+let playerScore = 0;
+let cpuScore = 0;
+//let playerSelection = prompt("please type rock, paper or scissors");
 
 
 // Actual game logic
@@ -21,35 +25,50 @@ function computerPlay(choices){
 
 
 function playRound(playerSelection, computerSelection){
-    // downcase string
+    // remember to downcase string
+    playerSelection.toLowerCase();
     if(playerSelection == 'rock' && computerSelection == 'paper'){
-        return "you lose";
+        cpuScore++;
+        return "CPU has scored";
         }
     if(playerSelection == 'scissors' && computerSelection == 'rock'){
-        return "you lose";
+        cpuScore++;
+        return "CPU has scored";
         }
     if(playerSelection == 'paper' && computerSelection == 'scissors'){
-        return "you lose";
+        cpuScore++;
+        return "CPU has scored";
         }
     else{
-        return "you win!"
+        playerScore++;
+        return "You have scored"
     }
-    // if(playerSelection == 'paper' && computerSelection == 'rock'){
-    //     return "you win";
-    //     }
-    // if(playerSelection == 'paper' && computerSelection == 'rock'){
-    //     return "you win";
-    //     }   
 };
 
-const playerSelection = "rock";
-const computerSelection = computerPlay(choices);
-console.log(playRound(playerSelection, computerSelection));
+function determineResults(){
+
+    if(playerScore > cpuScore){
+        return "You have won!!"
+    }
+    if(playerScore == cpuScore){
+        return "you have tied!!"
+    }
+    else return "you lost!!"
+};
 
 
 function game(){
     // Remember loops? This is a great opportunity to use one to play those five rounds:
+
+
     for(let i = 0; i < 5; i++){
-        playRound();
-    }
+        const computerSelection = computerPlay(choices);
+        console.log(playRound(playerSelection, computerSelection))
+        console.log("Player score is:" + playerScore);
+        console.log("CPU score is:" + cpuScore+ '\n');
+    } 
+    return determineResults();
 }
+
+
+console.log(game());
