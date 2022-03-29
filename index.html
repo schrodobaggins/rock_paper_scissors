@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<!-- Create general layout of game. Three buttons to decide play, and results -->
+<body>
+    <header class="titles_desc">
+        <h1 class = header>Rock, Paper, Scissors</h1>
+        <p>Game-play description here lore ipsum</p>
+    </header>
+    <div class ="results subsection">
+        <div class ="results">
+            <ul class = "show-round">
+                Round: <span id="current-round">1</span>
+            </ul>
+            <ul class="show-cpu-score">
+                CPU score: <span id="current-cpu-score">0</span>
+            </ul>
+            <ul class="show-player-score">
+                Player score: <span id="current-player-score">0</span>
+            </ul>
+            <ul class="show-cpu-choice">
+                CPU move: <span id="current-cpu-choice">
+                    <p class ="display-choice"> ? </p>
+                </span>
+            </ul>
+        </div>
+    </div>
+    <div class ="button selections">
+        <div class = "rock">
+            <button class="choice" value="rock">Rock</button>
+        </div>
+        <div class = "paper">
+            <button class="choice" value="paper">Paper</button>
+        </div>
+        <div class = "rock">
+            <button class="choice" value="scissors">Scissors</button>
+        </div>
+    </div>
+</body>
+</html>
