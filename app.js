@@ -5,11 +5,11 @@
 
 // global instance variables
 
-const playerSelection = "rock";
+// const playerSelection = "rock";
 const choices = ["rock","paper","scissors"];
 let playerScore = 0;
 let cpuScore = 0;
-//let playerSelection = prompt("please type rock, paper or scissors");
+
 
 
 // Actual game logic
@@ -44,9 +44,8 @@ function playRound(playerSelection, computerSelection){
         return "You have scored"
     }
 };
-
+// function to determine results
 function determineResults(){
-
     if(playerScore > cpuScore){
         return "You have won!!"
     }
@@ -59,9 +58,8 @@ function determineResults(){
 
 function game(){
     // Remember loops? This is a great opportunity to use one to play those five rounds:
-
-
     for(let i = 0; i < 5; i++){
+        var playerSelection = window.prompt("please type rock, paper or scissors: ");
         const computerSelection = computerPlay(choices);
         console.log(playRound(playerSelection, computerSelection))
         console.log("Player score is:" + playerScore);
