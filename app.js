@@ -10,9 +10,33 @@ const choices = ["rock","paper","scissors"];
 let playerScore = 0;
 let cpuScore = 0;
 
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+const computerScore = document.querySelector('#current-cpu-score');
+const userScore = document.querySelector('#current-player-score');
+
 
 
 // Actual game logic
+rock.addEventListener('click', () => {
+    const computerSelection = computerPlay(choices);
+    playRound('rock', computerSelection);
+    game();
+})
+paper.addEventListener('click', () => {
+    console.log("paper");
+    const computerSelection = computerPlay(choices);
+    playRound('paper', computerSelection);
+    game();
+})
+scissors.addEventListener('click', () => {
+    console.log("scissors");
+    const computerSelection = computerPlay(choices);
+    playRound('scissors', computerSelection);
+    game();
+})
 
 function computerPlay(choices){
         // get random index value
@@ -26,47 +50,43 @@ function computerPlay(choices){
 
 function playRound(playerSelection, computerSelection){
     // remember to downcase string
-    playerSelection.toLowerCase();
     if(playerSelection == 'rock' && computerSelection == 'paper'){
+        console.log("scored");
         cpuScore++;
         return "CPU has scored";
         }
     if(playerSelection == 'scissors' && computerSelection == 'rock'){
+        console.log("scored");
         cpuScore++;
         return "CPU has scored";
         }
     if(playerSelection == 'paper' && computerSelection == 'scissors'){
+        console.log("scored");
         cpuScore++;
         return "CPU has scored";
         }
     else{
+        console.log("scored");
         playerScore++;
         return "You have scored"
     }
 };
 // function to determine results
 function determineResults(){
-    if(playerScore > cpuScore){
+    if(playerScore >= 5){
         return "You have won!!"
     }
-    if(playerScore == cpuScore){
-        return "you have tied!!"
+    if(cpuScore >= 5){
+        return "you have lost!!"
     }
-    else return "you lost!!"
+    else return "you tied!!"
 };
 
 
 function game(){
-    // Remember loops? This is a great opportunity to use one to play those five rounds:
-    for(let i = 0; i < 5; i++){
-        var playerSelection = window.prompt("please type rock, paper or scissors: ");
-        const computerSelection = computerPlay(choices);
-        console.log(playRound(playerSelection, computerSelection))
         console.log("Player score is:" + playerScore);
         console.log("CPU score is:" + cpuScore+ '\n');
-    } 
     return determineResults();
 }
 
 
-console.log(game());
