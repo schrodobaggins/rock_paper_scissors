@@ -4,22 +4,26 @@
 
 
 // global instance variables
-
-// const playerSelection = "rock";
 const choices = ["rock","paper","scissors"];
 let playerScore = 0;
 let cpuScore = 0;
+let currRound = 1;
 
+// choices
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
-const computerScore = document.querySelector('#current-cpu-score');
-const userScore = document.querySelector('#current-player-score');
+// keeping count of score and rounds
+const playerCounter = document.querySelector('#current-player-score');
+const computerCounter = document.querySelector('#current-cpu-score');
+const currentRound = document.querySelector('#current-round');
 
+playerCounter.textContent = 0;
+computerCounter.textContent = 0;
+currentRound.textContent = 1;
 
-
-// Actual game logic
+// user input clicks
 rock.addEventListener('click', () => {
     const computerSelection = computerPlay(choices);
     playRound('rock', computerSelection);
@@ -38,6 +42,19 @@ scissors.addEventListener('click', () => {
     game();
 })
 
+// keeps track of the user and computer scores
+window.addEventListener('click', function() {
+    playerCounter.textContent = playerScore
+});
+window.addEventListener('click', function() {
+    computerCounter.textContent = cpuScore
+});
+
+window.addEventListener('click', function(){
+    currentRound.textContent = currRound
+});
+
+// determines random output for cpu moves
 function computerPlay(choices){
         // get random index value
         const randomIndex = Math.floor(Math.random() * choices.length);
@@ -49,24 +66,24 @@ function computerPlay(choices){
 
 
 function playRound(playerSelection, computerSelection){
-    // remember to downcase string
+
     if(playerSelection == 'rock' && computerSelection == 'paper'){
-        console.log("scored");
+        currRound++
         cpuScore++;
         return "CPU has scored";
         }
     if(playerSelection == 'scissors' && computerSelection == 'rock'){
-        console.log("scored");
+        currRound++
         cpuScore++;
         return "CPU has scored";
         }
     if(playerSelection == 'paper' && computerSelection == 'scissors'){
-        console.log("scored");
+        currRound++
         cpuScore++;
         return "CPU has scored";
         }
     else{
-        console.log("scored");
+        currRound++
         playerScore++;
         return "You have scored"
     }
@@ -84,8 +101,8 @@ function determineResults(){
 
 
 function game(){
-        console.log("Player score is:" + playerScore);
-        console.log("CPU score is:" + cpuScore+ '\n');
+        // console.log("Player score is:" + playerScore);
+        // console.log("CPU score is:" + cpuScore+ '\n');
     return determineResults();
 }
 
