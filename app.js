@@ -14,45 +14,52 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
-// keeping count of score and rounds
+// link to the html elements
 const playerCounter = document.querySelector('#current-player-score');
 const computerCounter = document.querySelector('#current-cpu-score');
 const currentRound = document.querySelector('#current-round');
 
+// counter variables
 playerCounter.textContent = 0;
 computerCounter.textContent = 0;
 currentRound.textContent = 1;
+
+
 
 // user input clicks
 rock.addEventListener('click', () => {
     const computerSelection = computerPlay(choices);
     playRound('rock', computerSelection);
-    game();
 })
 paper.addEventListener('click', () => {
-    console.log("paper");
+    //console.log("paper");
     const computerSelection = computerPlay(choices);
     playRound('paper', computerSelection);
-    game();
 })
 scissors.addEventListener('click', () => {
-    console.log("scissors");
+    //console.log("scissors");
     const computerSelection = computerPlay(choices);
     playRound('scissors', computerSelection);
-    game();
 })
+
+
 
 // keeps track of the user and computer scores
 window.addEventListener('click', function() {
     playerCounter.textContent = playerScore
+    determineResults();
 });
 window.addEventListener('click', function() {
     computerCounter.textContent = cpuScore
+    determineResults();
 });
 
 window.addEventListener('click', function(){
     currentRound.textContent = currRound
+    determineResults();
 });
+
+
 
 // determines random output for cpu moves
 function computerPlay(choices){
@@ -70,40 +77,34 @@ function playRound(playerSelection, computerSelection){
     if(playerSelection == 'rock' && computerSelection == 'paper'){
         currRound++
         cpuScore++;
-        return "CPU has scored";
+        return determineResults();
         }
     if(playerSelection == 'scissors' && computerSelection == 'rock'){
         currRound++
         cpuScore++;
-        return "CPU has scored";
+        return determineResults();
         }
     if(playerSelection == 'paper' && computerSelection == 'scissors'){
         currRound++
         cpuScore++;
-        return "CPU has scored";
+        return determineResults();
         }
     else{
         currRound++
         playerScore++;
-        return "You have scored"
+        return determineResults();
     }
 };
 // function to determine results
 function determineResults(){
+    
+    // victory.style.display = hidden;
+
     if(playerScore >= 5){
-        return "You have won!!"
+        return console.log("You have won!!");
     }
     if(cpuScore >= 5){
-        return "you have lost!!"
+        return console.log("you have lost!!");
     }
     else return "you tied!!"
 };
-
-
-function game(){
-        // console.log("Player score is:" + playerScore);
-        // console.log("CPU score is:" + cpuScore+ '\n');
-    return determineResults();
-}
-
-
